@@ -1,0 +1,205 @@
+---
+title: "Berkeley admission data"
+# author: "Yutong Wang"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr) 
+# devtools::install_github("rstudio-education/dsbox")
+library(dsbox)
+library(tidyverse)
+library(scales) # plot labeling
+
+tutorial_options(
+  exercise.timelimit = 60,
+  # A simple checker function that just returns the message in the check chunk
+  exercise.checker = function(check_code, ...) {
+    list(
+      message = eval(parse(text = check_code)),
+      correct = logical(0),
+      type = "info",
+      location = "append"
+    )
+  }
+)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Welcome
+
+In this tutorial, we will explore a Berkeley admission dataset and learn how to 
+
+* visualize a dataset including categorical variables
+* play around with a dataset, e.g. data wrangling, tidying, acquisition
+* think critically as a statistician
+
+The tutorial is based on [_datasciencebox.org_](https://datasciencebox.org/course-materials/_slides/u2-d16-simpsons-paradox/u2-d16-simpsons-paradox.html#3).
+
+## Berkeley admission data
+
+* Study carried out by the Graduate Division of the University of California, 
+Berkeley in the early 70’s to evaluate whether there was a gender bias in 
+graduate admissions.
+* The data come from six departments. For confidentiality we'll call them A-F.
+* We have information on whether the applicant was male or female and whether 
+they were admitted or rejected.
+
+```{r data1, exercise = TRUE, exercise.eval = FALSE}
+head(ucbadmit, n = 5)
+```
+
+`head()` lets you take a quick look at the first part of a data-storing object. 
+We can specify how many rows we'd like to see through the argument `n`. 
+
+```{r data2, exercise = TRUE, exercise.eval = FALSE}
+dim(ucbadmit)
+```
+
+`dim` retrieves the dimension of an object. How many applicants are there in the 
+dataset? What information (features) do we know about each individual?
+
+### Basic statistics 
+```{r basic-stat1, exercise = TRUE, exercise.eval = FALSE}
+table(ucbadmit$admit) 
+```
+
+```{r basic-stat3, exercise = TRUE, exercise.eval = FALSE}
+table(ucbadmit$dept) 
+```
+
+```{r basic-stat4, exercise = TRUE, exercise.eval = FALSE}
+table(ucbadmit$gender) 
+```
+
+## Question of interest
+
+* In plain English: Is there any gender bias in the admission process, e.g. 
+males are more likely to be admitted than females?
+* Formulating with a bit statistics: Is the percentage of males admitted indeed 
+higher than females?
+* That is, to compare (1) the percentage of admitted males out of all the male 
+applicants and (2) the percentage of admitted females out of all the female 
+applicants.
+
+```{r question1, exercise = TRUE, exercise.eval = FALSE}
+tbl_perc <- table(ucbadmit$admit, ucbadmit$gender)
+tbl_perc
+```
+
+solution 1:
+```{r question2, exercise = TRUE, exercise.eval = FALSE}
+tbl_perc <- table(ucbadmit$admit, ucbadmit$gender)
+tbl_perc[2, 1] / (tbl_perc[1, 1] + tbl_perc[2, 1]) # female
+tbl_perc[2, 2] / (tbl_perc[1, 2] + tbl_perc[2, 2]) # male
+```
+
+solution 2:
+```{r question3, exercise = TRUE, exercise.eval = FALSE}
+sum(ucbadmit$admit == "Admitted" & ucbadmit$gender == "Female") / sum(ucbadmit$gender == "Female")
+sum(ucbadmit$admit == "Admitted" & ucbadmit$gender == "Male") / sum(ucbadmit$gender == "Male")
+```
+
+### Let's visualize it!
+
+```{r gender-admit, fig.show = TRUE}
+ggplot(ucbadmit, aes(y = gender, fill = admit)) + # specify the variables for the y axis and color
+  geom_bar(position = "fill") + # we want a barplot
+  labs(title = "Admit by gender", # add a plot title
+       y = NULL, x = NULL) + # remove axis titles
+  theme_classic() + theme(legend.position = "bottom") # nice aesthetics
+```
+
+## What if we look at it by department? 
+```{r department, include = FALSE}
+ucbadmit %>%
+  count(dept, gender, admit) %>%
+  pivot_wider(names_from = dept, values_from = n)
+```
+
+```{r department-plot, fig.show = TRUE}
+ggplot(ucbadmit, aes(y = gender, fill = admit)) +
+  geom_bar(position = "fill") +
+  facet_wrap(. ~ dept) + # separate plots by department
+  scale_x_continuous(labels = label_percent()) + # specify x axis label
+  labs(title = "Admissions by gender and department",
+       x = NULL, y = NULL, fill = NULL) +
+  theme_classic() + theme(legend.position = "bottom") 
+```
+
+### Comparison
+
+What do you notice when comparing the department-specific barplots with the 
+barplot of the six departments combined?
+```{r gender-admit-rep, fig.show = TRUE}
+ggplot(ucbadmit, aes(y = gender, fill = admit)) + 
+  geom_bar(position = "fill") + 
+  labs(title = "Admit by gender", 
+       y = NULL, x = NULL) +
+  theme_classic() + theme(legend.position = "bottom")
+```
+
+## Simpson's Paradox
+
+### A motivating example
+```{r echo=FALSE, message=FALSE}
+df <- tribble(
+  ~x, ~y, ~z,
+  2,   4,  "A",
+  3,   3,  "A",
+  4,   2,  "A",
+  5,   1,  "A",
+  6,   11, "B",
+  7,   10, "B",
+  8,   9,  "B",
+  9,   8,  "B"
+)
+```
+
+```{r echo = FALSE, fig.show = TRUE}
+ggplot(df) +
+  geom_point(aes(x = x, y = y), color = "darkgray", size = 5) +
+  theme_minimal()
+```
+
+What if we try to fit the relationship between two variables on x and y axis?
+```{r echo = FALSE, message = FALSE, fig.show = TRUE}
+ggplot(data = df) +
+  geom_point(aes(x = x, y = y), color = "darkgray", size = 5) +
+  geom_smooth(aes(x = x, y = x), color = "darkgray") +
+  theme_minimal()
+```
+
+What is there is actually a third variable we were not aware of before?!
+```{r echo = FALSE, message = FALSE, fig.show = TRUE}
+ggplot(data = df) +
+  geom_point(aes(x = x, y = y, color = z), size = 5) +
+  geom_smooth(aes(x = x, y = x), method = "lm", color = "darkgray") +
+  theme_minimal()
+```
+
+```{r echo = FALSE, message = FALSE, fig.show = TRUE}
+ggplot(data = df) +
+  geom_point(aes(x = x, y = y, color = z), size = 5) +
+  geom_smooth(aes(x = x, y = x), method = "lm", color = "darkgray") +
+  geom_smooth(aes(x = x, y = y, color = z), method = "lm") +
+  theme_minimal()
+```
+
+## Takeaways
+
+- Not considering an important variable when studying a relationship can result in **Simpson's paradox**
+- Simpson's paradox illustrates the effect that omission of an explanatory variable can have on the measure of association between another explanatory variable and a response variable
+- The inclusion of a third variable in the analysis can change the apparent relationship between the other two variables
+- [Video](https://www.youtube.com/watch?v=E_ME4P9fQbo)
+
+### Questions
+* What is the third variable in our analysis of the Berkeley admission data?
+* Given the data (evidence) that we have, is there any gender bias in the 
+admission process, e.g. males are more likely to be admitted than females?
+* Is there any similar scenario or potential issue you could come up with in our 
+real life?
