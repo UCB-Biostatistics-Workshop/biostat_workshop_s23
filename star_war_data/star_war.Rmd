@@ -49,7 +49,13 @@ knitr::include_graphics("images/Star-Wars-1.jpg")
 
 The data format is a table with 87 rows and 14 columns. Each row corresponds to 
 a character in Star Wars, and each column represents a variable for each character. 
-Such variables include 
+
+> Recap: 
+What can be counted as a variable? 
+What does each of the following variable belong to?
+What are their data types? 
+
+The variables include 
 
 * name: name of the character
 * height: height (cm)
@@ -68,13 +74,14 @@ or none (as in the case for Droids)
 Reference: [dplyr.tidyverse.org](https://dplyr.tidyverse.org/reference/starwars.html)
 
 ```{r data1, exercise = TRUE, exercise.eval = FALSE}
-head(starwars, n = 5)
+# Specify the number of characters you'd like to look at
+head(starwars, n = _)
 ```
 
-To recap, `head()` lets you take a quick look at the first part of a data-storing 
+`head()` lets you take a quick look at the first part of a data-storing 
 object. We can specify how many rows we'd like to see through the argument `n`. 
 
-We will ask and answer some questions about the chcracters. Feel free to make a 
+We will ask and answer some questions about the characters. Feel free to make a 
 guess or say out the answer before digging into the data. :)
 
 ## Who is the tallest character in Star Wars?
