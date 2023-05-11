@@ -1,0 +1,561 @@
+---
+title: "Hello, R!"
+output: 
+    learnr::tutorial:
+        progressive: true
+        allow_skip: true
+runtime: shiny_prerendered
+description: "Welcome to a learnr tutorial for R!"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+# remotes::install_github("rstudio/gradethis")
+library(gradethis)
+gradethis_setup()
+options(tutorial.exercise.timelimit = 5)
+```
+
+## Introduction to R
+
+Welcome to the world of R! R is a programming language that is commonly used in data analysis, statistics, and research. Don't worry if you've never programmed before, we will start from the very beginning.
+
+## Variables 
+
+### What is a Variable?
+
+In R, a variable is a container that holds a value. This value can be a number, text, or even a more complex data structure like a list or a table. We use variables to store information so that we can use it later in our program.
+
+### Variable Names
+
+In R, variable names must start with a letter and can contain letters, numbers, the underscore character, and periods. Variable names are case sensitive, which means that x and X are two different variables. For example, the following are all valid variable names:
+
+```{r, eval=FALSE}
+x
+x1
+x_1
+x_y
+x.y
+```
+
+The following are not valid variable names:
+
+```{r, eval=FALSE}
+1x
+x-1
+x y
+```
+
+### Variable Assignment
+
+To assign a value to a variable, we use the assignment operator, which is represented by the <- or = symbol. For example, if we want to assign the value 5 to a variable called x, we would write:
+
+```{r}
+x <- 5
+```
+
+We can also assign the value of one variable to another variable. For example, if we want to assign the value of x to a variable called y, we would write:
+
+```{r}
+y <- x
+```
+
+When naming a variable, it is important to choose a name that is descriptive of what the variable represents. For example, if you are storing the number of hours you slept last night, you might name the variable `hours_slept`.
+
+### Comments and Exercises
+
+In the following examples, we will use comments to explain what the code is doing. Comments are a way to add notes or explanations to your code without affecting how the code is executed. In R, comments start with the # symbol and continue until the end of the line. Here's an example of a code block with comments:
+
+```{r, eval=FALSE}
+# This is a comment
+x <- 5 # This is also a comment
+```
+
+We will also use comments inside of exercises. These comments will tell you what you need to do to complete the exercise. For example:
+
+```{r exercise_intro1, exercise=TRUE}
+# Assign the value 10 to a variable called x
+x <- 10
+```
+
+```{r exercise_intro1-solution}
+x <- 10
+```
+
+```{r exercise_intro1-check}
+grade_result(
+    pass_if(~ x == 10)
+)
+```
+
+Sometimes we will use the underscore character, _, to indicate a blank space that you need to fill in. For example:
+
+```{r, exercise_intro2, exercise=TRUE, exercise.blanks = "___+"}
+# replace the underscores with the number 10
+x <- ___
+```
+
+```{r exercise_intro2-solution}
+x <- 10
+```
+
+```{r exercise_intro2-check}
+grade_result(
+    pass_if(~ x == 10)
+)
+```
+
+### Exercise 1
+
+Assign the value 10 to a variable called x.
+
+```{r exercise1, exercise=TRUE}
+# Assign the value 10 to a variable called x
+```
+
+```{r exercise1-solution}
+x <- 10
+# or
+x = 10
+```
+
+```{r exercise1-check}
+grade_result(
+    pass_if(~ x == 10)
+)
+```
+
+### Exercise 2
+
+Assign the value of x to a variable called y.
+
+```{r exercise2, exercise=TRUE}
+# Assign the value of x to a variable called y
+```
+
+```{r exercise2-setup}
+x <- -1
+```
+
+```{r exercise2-solution}
+y <- x
+# or
+y = x
+```
+
+```{r exercise2-check}
+grade_result(
+    pass_if(~ y == x)
+)
+```
+
+## Data Types
+
+### The Different Types of Data
+
+In R, there are several different types of data that you can work with. These include:
+
+1. Numeric - These are numbers with decimal places or without. For example, 5, 3.14, -2.718, etc.
+
+2. Character - These are sequences of letters, numbers, and symbols enclosed in quotation marks. For example, "Hello world!", "12345", "$$$", etc.
+
+3. Logical - These are values that are either TRUE or FALSE.
+
+5. Factor - These are categorical variables with a fixed set of values. For example, "Male", "Female".
+
+Let's take a look at each of these data types in more detail.
+
+### Numeric Data
+
+The numeric data type is used to represent numbers. You can perform basic arithmetic operations on numeric variables, like addition, subtraction, multiplication, and division. For example:
+
+```{r}
+x <- 5
+y <- 3
+z <- x + y # z now contains the value 8
+```
+
+How do we know that the value of z is 8? We can use the print function to display the value of a variable. The print function takes a variable as input and displays its value. Try replacing the underscore with the code needed to assign `x + y` to `z` and then print the value of `z`
+
+```{r exercise_print, exercise = TRUE, exercise.blanks = "___+"}
+x <- 5
+y <- 3
+z <- ___ # Replace the underscore with the code needed to assign x + y to z
+print(z)
+```
+
+### Character Data
+
+The character data type is used to represent strings of text. You can concatenate (combine) two or more character variables using the `paste()` function, like this:
+
+```{r exercise_characters, exercise=TRUE, exercise.blanks = "___+"}
+first_name <- "John"
+last_name <- "Doe"
+full_name <- paste(first_name, last_name)
+# Replace the underscore with the code needed to print the value of full_name
+print(___)
+```
+
+### Logical Data
+
+The logical data type represents boolean values, which can be either `TRUE` or `FALSE`. For example:
+
+```{r}
+x <- TRUE
+y <- FALSE
+```
+
+You can use logical operators to perform comparisons between variables, such as greater than (`>`), less than (`<`), equal to (`==`), and not equal to (`!=`). For example:
+
+```{r exercise_logical, exercise=TRUE, exercise.blanks = "___+"}
+x <- 5
+y <- 3
+z <- x > y # z now contains the value TRUE
+print(z)
+```
+
+Let's try another example. Replace the underscore with the code needed to assign whether or not `x` is less than `y` to `z`.
+
+```{r exercise_logical2, exercise=TRUE, exercise.blanks = "___+"}
+x <- 5
+y <- 3
+z <- ___ # Replace the underscore with the code needed to assign x < y to z
+print(paste("x is less than y:", z))
+```
+
+```{r exercise_logical2-solution}
+x <- 5
+y <- 3
+z <- x < y # Replace the underscore with the code needed to assign x < y to z
+print(paste("x is less than y:", z))
+```
+
+```{r exercise_logical2-check}
+grade_result(
+    pass_if(~ z == TRUE)
+)
+```
+
+### Factor Data
+
+The factor data type is used to represent categorical variables with a fixed set of values. To create a factor variable, you can use the `factor()` function, like this:
+
+```{r, eval=TRUE}
+gender <- factor(c("Male", "Female", "Male", "Male"))
+gender
+```
+
+You may notice the `c()` function in the example above. The `c()` function is used to combine multiple values into a vector. We will learn more about vectors in the next section.
+
+You can use the `levels()` function to see the set of values for a factor variable, like this:
+
+```{r, eval=TRUE}
+levels(gender)
+```
+
+## Functions
+
+A function is a block of code that performs a specific task. Functions are useful for modularizing your code and making it more readable and maintainable. R comes with many built-in functions, and you can also define your own functions.
+
+
+### Built-in Functions
+
+R comes with many built-in functions that you can use to perform common tasks. For example, the `sum()` function calculates the sum of a vector, and the `mean()` function calculates the mean of a vector. You can call these functions like any other function, passing in the vector as an argument. For example:
+
+```{r, eval=TRUE}
+my_vector <- c(1, 2, 3, 4, 5)
+sum_of_vector <- sum(my_vector)
+mean_of_vector <- mean(my_vector)
+
+print(paste("Sum of vector:", sum_of_vector))
+print(paste("Mean of vector:", mean_of_vector))
+```
+
+
+### Extra Credit: Defining Functions
+
+Sometimes the built-in functions don't do everything we want them to do. To solve this, we can define our own functions! To define a function in R, you can use the `function()` keyword, followed by the arguments to the function in parentheses, and then the body of the function in curly braces. For example:
+
+```{r, eval=TRUE}
+# we're assigning the function to a variable called my_function
+my_function <- function(x, y) {
+  z <- x + y
+  return(z)
+}
+```
+
+This defines a new function called `my_function` that takes two arguments `x` and `y`, adds them together, and returns the result. You can call this function like any other function, passing in values for `x` and `y`. For example:
+
+```{r}
+result <- my_function(3, 5)
+result
+```
+
+This will call the `my_function()` function with arguments x = 3 and y = 5, and store the result in the variable result.
+
+### Exercise: Define a Function
+
+Define a function called `add_one()` that takes a single argument `x` and adds 1 to it. Then, call the function with the argument `x = 5` and store the result in a variable called `result`.
+
+```{r exercise_function, exercise=TRUE, exercise.blanks = "___+", }
+# Replace the underscore with the code needed to define the function
+# Hint: You can use the function keyword, followed by the arguments 
+# in parentheses, and then the body of the function in curly braces
+add_one <- ___ 
+result <- add_one(5)
+print(result)
+```
+
+```{r exercise_function-solution}
+add_one <- function(x) {
+  return(x + 1)
+}
+result <- add_one(5)
+print(result)
+```
+
+```{r exercise_function-check}
+grade_result(
+    pass_if(~ add_one(10) == 11)
+)
+```
+
+## Collections
+
+Up to this point, we have mostly been working with single variables. However, more often than not, you will want to work with multiple variables at the same time. In R, we can do this using collections such as **vectors** and **data frames**.
+
+
+### Vectors
+A vector is a collection of values of the same data type. For example, a vector could contain a list of numbers, a list of names, or a list of Boolean values. To create a vector, you can use the `c()` function, which stands for "concatenate" or "combine". For example:
+
+```{r, eval=TRUE}
+my_vector <- c(1, 2, 3, 4, 5)
+my_vector
+```
+
+This creates a new vector my_vector that contains the values 1, 2, 3, 4, and 5.
+
+You can access individual elements of a vector using indexing. Indexing is a way of referring to a specific element in the vector. In R, indexing starts at 1 (unlike some other programming languages, which start indexing at 0). You can also use a colon (`:`) to access a range of values. For example:
+
+```{r ex_vector1, exercise=TRUE, exercise.eval=TRUE}
+my_vector <- c(1, 2, 3, 4, 5)
+my_vector[1] # This will return the first element of the vector
+
+# This will return the second, third, and fourth elements of the vector
+my_vector[2:4] 
+```
+
+In the first example, we are accessing the first element of the vector, which is 1. In the second example, we are accessing elements 2 through 4 of the vector, which are 2, 3, and 4.
+
+You can also perform mathematical operations on vectors, such as addition, subtraction, multiplication, and division. For example:
+
+```{r ex_vector2, exercise=TRUE, exercise.eval=TRUE}
+x <- c(1, 2, 3)
+y <- c(4, 5, 6)
+z <- x + y
+z
+```
+
+This will add the values in the vectors `x` and `y` together, and store the result in the vector `z`. Try changing the operator to `-`, `*`, or `/` to see what happens.
+
+### Exercise: Create a Vector
+Create a new vector called my_vector that contains the values 10, 20, 30, 40, and 50. Access the third element of the vector and store it in a new variable called third_element. Multiply the second and fourth elements of the vector and store the result in a new variable called product.
+
+```{r exercise_vector, exercise=TRUE, exercise.blanks = "___+"}
+# Replace the underscore with the code needed to create the vector
+my_vector <- ___
+
+# Replace the underscore with the code needed to access the third element of the vector
+third_element <- ___
+
+# Replace the underscore with the code needed to multiply the second and fourth elements of the vector
+
+product <- ___
+
+print(paste("Third element:", third_element))
+print(paste("Product:", product))
+```
+
+```{r exercise_vector-solution}
+my_vector <- c(10, 20, 30, 40, 50)
+third_element <- my_vector[3]
+product <- my_vector[2] * my_vector[4]
+print(paste("Third element:", third_element))
+print(paste("Product:", product))
+```
+
+```{r exercise_vector-check}
+grade_result(
+    pass_if(~ my_vector[1] == 10),
+    pass_if(~ my_vector[3] == 30),
+    pass_if(~ my_vector[5] == 50),
+    pass_if(~ third_element == 30),
+    pass_if(~ product == 800)
+)
+```
+
+
+### Data Frames
+
+A data frame is a container that is used to store tabular data, similar to an Excel spreadsheet. In a data frame, each column represents a variable, and each row represents an observation. Each column in a data frame can be of a different data type, and you can perform operations on the data as a whole or on subsets of the data. To create a data frame, you can use the `data.frame()` function. For example:
+
+```{r, eval=TRUE}
+my_data <- data.frame(
+    name = c("John", "Mary", "Bob"),
+    age = c(30, 25, 40),
+    is_student = c(TRUE, FALSE, TRUE)
+    )
+my_data
+```
+
+This creates a new data frame `my_data` that contains three rows and three columns, `name` which are strings, `age` which are integers, and `is_student` which are boolean values. Often times, you will want to read data into R from a file, such as a CSV file. CSV stands for "comma separated values", and is a common file format for storing tabular data. To read a CSV file into R, you can use the `read.csv()` function, which we do not cover here. 
+
+### Using Data Frames
+
+Once you've created a data frame, you can access the data in various ways. Here are a few examples:
+
+#### Accessing Columns
+
+You can access a column in a data frame using the $ operator. For example:
+```{r, eval=TRUE}
+my_data$name
+```
+
+This will return a vector of the values in the "name" column. You can also use the indexing operator `[` to access a column. For example:
+
+```{r, eval=TRUE}
+my_data["name"]
+```
+
+#### Accessing Rows
+
+You can access a row in a data frame using the indexing operator `[` and the row number. For example:
+
+```{r, eval=TRUE}
+my_data[1,]
+```
+
+This will return the first row of the data frame.
+
+### Exercise: Create a Data Frame
+Create a new data frame called my_data that contains the following data:
+
+| fruit | color | |
+|------|-----|------------|
+| John | 30  | TRUE       |
+| Mary | 25  | FALSE      |
+| Bob  | 40  | TRUE       |
+
+
+
+
+### Extra Credit: Lists
+
+Most day to day data analysis can be done without lists, but they are still a useful tool to have in your toolbox. A list is a collection of values of different data types. For example, a list could contain a list of numbers, a list of names, and a list of Boolean values. To create a list, you can use the `list()` function. For example:
+
+```{r, eval=TRUE}
+my_list <- list(
+    name = "John Smith", 
+    age = 30, 
+    is_student = TRUE
+    )
+my_list
+```
+
+This creates a new list my_list that contains three elements:
+
+- A character string "John Smith" with the name "name"
+- An integer 30 with the name "age"
+- A logical value TRUE with the name "is_student"
+
+You can access individual elements of a list using indexing. Unlike vectors, you can use either numeric or character indexing to access elements of a list. For example:
+
+```{r, eval=TRUE}
+my_list$name # returns "John Smith"
+my_list$age # returns 30
+my_list[[1]] # returns "John Smith"
+my_list[[2]] # returns 30
+```
+
+In the first two examples, we are using character indexing by using `$` to access the "name" and "age" elements of the list. In the last two examples, we are using numeric indexing to access the first and second elements of the list. Note that for numeric indexing in lists, we use double brackets (`[[`).
+
+### Exercise: Create a List
+- Create a list called my_fruits with the following named elements: 
+    `fruit1`: the string "apple"
+    `pi_value`: the numeric value 3.14
+    `fruit2`: a character vector containing the values "orange" and "banana"
+    `nums`: a numeric vector containing the values 1, 2, and 3
+- Access the `pi_value` element of the list and store it in a variable called `pi_val`.
+- Add a new named element to the list with the name "berries" and the values "strawberry" and "blueberry".
+- Access the "berries" element of the list and store it in a variable called `my_berries`.
+
+```{r exercise_list, exercise=TRUE, exercise.blanks = "___+"}
+# Replace the underscore with the code needed to create the list
+# **Hint:** You can create a list using the `list()` function. 
+# For example, `my_list <- list(name = "John Smith", age = 30, is_student = TRUE)`.
+my_fruits <- ___
+
+# Replace the underscore with the code needed to access the 
+# pi_value element of the list
+
+# **Hint:** You can access elements of a list using character
+# indexing by using `$` to access the element with the
+# specified name. For example, `my_list$name` returns the value
+# "John Smith". Alternatively, you can use numeric indexing by
+# using double brackets (`[[`) to access the element at the
+# specified index. For example, `my_list[[1]]` returns the
+# value "John Smith".
+
+pi_val <- ___
+
+# Replace the underscore with the code needed to add a new element to the list
+# **Hint:** You can add a new element to a list by using the `$` operator.
+# For example, `my_list$new_element <- "new value"`.
+my_fruits$___ <- ___
+
+
+# Replace the underscore with the code needed to access the berries element of the list
+# **Hint:** You can access named elements of a list using character indexing
+# by using `$` to access the element with the specified name. For example,
+# `my_fruits$fruit1` returns the value "apple".
+my_berries <- ___
+
+print(paste("pi_val:", pi_val))
+print(paste("my_berries:", my_berries))
+```
+
+```{r exercise_list-solution}
+my_fruits <- list(
+    fruit1 = "apple", 
+    pi_value = 3.14, 
+    fruit2 = c("orange", "banana"), 
+    nums = c(1, 2, 3)
+    )
+
+pi_val <- my_fruits$pi_value
+
+my_fruits$berries <- c("strawberry", "blueberry")
+
+my_berries <- my_fruits$berries
+
+print(paste("pi_val:", pi_val))
+
+print(paste("my_berries:", my_berries))
+```
+
+```{r exercise_list-check}
+grade_result(
+    pass_if(~ my_fruits$fruit1 == "apple"),
+    pass_if(~ my_fruits$pi_value == 3.14),
+    pass_if(~ my_fruits$fruit2[1] == "orange"),
+    pass_if(~ my_fruits$fruit2[2] == "banana"),
+    pass_if(~ my_fruits$nums[1] == 1),
+    pass_if(~ my_fruits$nums[2] == 2),
+    pass_if(~ my_fruits$nums[3] == 3),
+    pass_if(~ pi_val == 3.14),
+    pass_if(~ my_fruits$berries[1] == "strawberry"),
+    pass_if(~ my_fruits$berries[2] == "blueberry"),
+    pass_if(~ my_berries[1] == "strawberry"),
+    pass_if(~ my_berries[2] == "blueberry")
+)
+```
