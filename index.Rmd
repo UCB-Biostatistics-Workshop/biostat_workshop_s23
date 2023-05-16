@@ -23,6 +23,12 @@ This is the website for the Data Science Workshop at the University of Californi
 
 ## Kaitlyn Lee
 
+<div class="profile-pic">
+  <img src="assets/kaitlynlee.jpeg" alt="Kaitlyn Lee">
+</div>
+
+Kaitlyn (she/her) is a 1st year MA/PhD student in Biostatistics at UC Berkeley. She studies ways to quantify how different policies cause an outcome to change (for example, how lowering the speed limit on a street might change the number of car crashes). Outside of school and research, she likes going on runs with her dog, trying new ice cream flavors, and working on crossword puzzles. She's very excited to be a part of this workshop this weekend!
+
 ## Max Murphy
 <div class="profile-pic">
   <img src="assets/maxmurphy_c.jpg" alt="Max Murphy">
