@@ -4,6 +4,12 @@ on:
       - index.Rmd
       - styles.css
       - _site.yml
+  workflow_dispatch:
+    inputs:
+      rebuild_website:
+        description: 'Rebuild website'
+        required: true
+        default: 'true'
 
 name: render-website
 
