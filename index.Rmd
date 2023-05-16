@@ -23,7 +23,12 @@ This is the website for the Data Science Workshop at the University of Californi
 
 ## Kaitlyn Lee
 
-## Maxwell Murphy
+## Max Murphy
+<div class="profile-pic">
+  <img src="assets/maxmurphy_c.jpg" alt="Max Murphy">
+</div>
+
+Max is a 4th year PhD student in the Department of Biostatistics at UC Berkeley. He works on analyzing the genetics of Malaria parasites, developing methods to understand how the parasite spreads through populations. When he's not working, you can find him playing and hiking with his dog Charlie, or playing video games with his brothers and partner.
 
 # Schedule
 
