@@ -1,0 +1,12 @@
+name: "data-science-workshop"
+navbar:
+  title: "UC Berkeley Biostatistics Data Science Workshop"
+output:
+  html_document:
+    version: 5
+    bootswatch: flatly
+    theme:
+      bg: "#ffffff"
+      fg: "#4b4b45"
+      primary: "#0078bf"
+      success: "#f08122"

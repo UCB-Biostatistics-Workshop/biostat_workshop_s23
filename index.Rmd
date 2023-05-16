@@ -1,0 +1,64 @@
+---
+title: "Data Science Workshop - Spring 2023"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float:
+      collapsed: FALSE
+      smooth_scroll: TRUE
+    toc_depth: 1
+    css: styles.css
+    theme: simplex
+---
+  
+# Welcome!
+
+This is the website for the Data Science Workshop at the University of California, Berkeley. 
+
+# About the Workshop
+
+# About the Instructors {.tabset .tabset-fade .tabset-pills}
+
+## Yutong Wang
+
+## Kaitlyn Lee
+
+## Maxwell Murphy
+
+# Schedule
+
+## Day 1: Introduction to R and RStudio
+
+## Day 2: Data Wrangling and Visualization
+
+# Resources
+
+## Lectures
+
+## Labs
+
+- [Introduction to R and `learnr`](https://biostat-workshop-s23.fly.dev/intro-r/){target="_blank"}
+- [Star Wars Data Wrangling](https://biostat-workshop-s23.fly.dev/star-wars/){target="_blank"}
+- [Penguins and Data Visualization](https://biostat-workshop-s23.fly.dev/penguins/){target="_blank"}
+<!-- - [Berkeley Admissions and the Simpson's Paradox](https://biostat-workshop-s23.fly.dev/berkeley-admissions/){target="_blank"} -->
+
+## Extra Resources
+
+If you are interested in learning more about R and RStudio on your own, here are some resources that we recommend:
+
+- [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham and Garrett Grolemund
+- [RStudio Cheat Sheets](https://rstudio.com/resources/cheatsheets/)
+
+If you are interested in finding data to explore, here are some resources that we recommend:
+
+- [U.S. Government Open Data](https://www.data.gov/)
+- [Kaggle Datasets](https://www.kaggle.com/datasets)
+
+
+# Contact Us
+
+If you have any questions, please feel free to reach out to us at [biostats-outreach@berkeley.edu](mailto:biostats-outreach@berkeley.edu).
+
+
+
+

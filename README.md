@@ -1,2 +1,3 @@
-# biostat_workshop_s23
+# Biostatistics Workshop - Spring 2023
+
 

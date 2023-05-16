@@ -1,5 +1,5 @@
 ---
-title: "star war data"
+title: "Star Wars"
 # author: "Yutong Wang"
 output: 
   learnr::tutorial:
@@ -99,7 +99,7 @@ starwars[which.max(starwars$height), "name"]
 ```
 
 We could also look a bit more into the heights (numerical values) of all the 
-chatacters in Star Wars. 
+characters in Star Wars. 
 
 ```{r tall2, exercise = TRUE, exercise.eval = FALSE}
 summary(starwars$height)
