@@ -27,7 +27,8 @@ jobs:
       - uses: r-lib/actions/setup-tinytex@v2
 
       - name: Install Rmarkdown
-        run: 'install.packages("rmarkdown")'
+        run: install.packages("rmarkdown")
+        shell: Rscript {0}
 
       - name: Build site
         run: rmarkdown::render_site("index.Rmd")
