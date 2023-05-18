@@ -120,3 +120,11 @@ If you are interested in finding data to explore, here are some resources that w
 # Contact Us
 
 If you have any questions, please feel free to reach out to us at [biostat-outreach\@berkeley.edu](mailto:biostat-outreach@berkeley.edu).
+
+# Acknowledgement
+
+We extend our gratitude to the instructor team - Yutong Wang, Kaitlyn Lee, and Maxwell Murphy, for their substantial contributions to outreach, recruitment, coordination, and instructional material development. Special thanks to Corinne Riddell, our DEI Faculty advisor, for her pivotal guidance, and to Juan Alberdin, Christina Da Silva, and Burke Bundy for their administrative and technical support.
+
+We appreciate the support of Alan Hubbard, Chair of the Biostatistics Division, for facilitating necessary funding. We are grateful to our faculty panel - Jingshen Wang, Linqing Wei, and Zeyu Zheng, and graduate student panel - Noel Pimentel, Nolan Gunter, and Lauren Liao, for their valuable insights.
+
+Acknowledgements are also due to Stacy Li, Zhiyue Hu, and Jonathan Kramer-Roach for their assistance in outreach and planning, and to LPS Richmond and Oakland Technical High School for their cooperation. These collective efforts have made the workshop a valuable experience for all participants.
