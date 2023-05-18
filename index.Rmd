@@ -8,7 +8,7 @@ output:
       smooth_scroll: TRUE
     toc_depth: 1
     css: styles.css
-    theme: simplex
+    theme: bootstrap
 ---
 
 # Welcome!
