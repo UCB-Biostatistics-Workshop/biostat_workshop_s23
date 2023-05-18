@@ -50,7 +50,7 @@ Upon completion of the workshop, participants will:
 ## Yutong Wang
 
 ::: profile-pic
-<img src="assets/yutongwang.JPG" alt="Yutong Wang"/>
+<img src="assets/yutongwang.jpeg" alt="Yutong Wang"/>
 :::
 
 Yutong is a PhD candidate in Biostatistics at UC Berkeley. She is also the Diversity, Equity, Inclusion, and Belonging (DEIB) Student Fellow in Biostatistics. Yutong uses statistics and computer science to investigate how genetics affect human health, such as cancer biology and neuroscience. When not staring at her computer, Yutong loves climbing, hiking, reading, and baking.
@@ -117,14 +117,16 @@ If you are interested in finding data to explore, here are some resources that w
 -   [U.S. Government Open Data](https://www.data.gov/)
 -   [Kaggle Datasets](https://www.kaggle.com/datasets)
 
-# Contact Us
-
-If you have any questions, please feel free to reach out to us at [biostat-outreach\@berkeley.edu](mailto:biostat-outreach@berkeley.edu).
-
 # Acknowledgement
 
 We extend our gratitude to the instructor team - Yutong Wang, Kaitlyn Lee, and Maxwell Murphy, for their substantial contributions to outreach, recruitment, coordination, and instructional material development. Special thanks to Corinne Riddell, our DEI Faculty advisor, for her pivotal guidance, and to Juan Alberdin, Christina Da Silva, and Burke Bundy for their administrative and technical support.
 
-We appreciate the support of Alan Hubbard, Chair of the Biostatistics Division, for facilitating necessary funding. We are grateful to our faculty panel - Jingshen Wang, Linqing Wei, and Zeyu Zheng, and graduate student panel - Noel Pimentel, Nolan Gunter, and Lauren Liao, for their valuable insights.
+We appreciate the support of Alan Hubbard, Chair of the Biostatistics Division, for facilitating necessary funding. We also acknowledge the financial assistance from the Blue Shield of California Health Equity Fellows Program, which significantly contributed to the implementation of the workshop.
 
-Acknowledgements are also due to Stacy Li, Zhiyue Hu, and Jonathan Kramer-Roach for their assistance in outreach and planning, and to LPS Richmond and Oakland Technical High School for their cooperation. These collective efforts have made the workshop a valuable experience for all participants.
+We are grateful to our faculty panel - Jingshen Wang, Linqing Wei, and Zeyu Zheng, and graduate student panel - Noel Pimentel, Nolan Gunter, and Lauren Liao, for their valuable insights. Acknowledgements are also due to Stacy Li, Zhiyue Hu, and Jonathan Kramer-Roach for their assistance in outreach and planning, and to LPS Richmond and Oakland Technical High School for their cooperation. These collective efforts have made the workshop a valuable experience for all participants.
+
+
+# Contact Us
+
+If you have any questions, please feel free to reach out to us at [biostat-outreach\@berkeley.edu](mailto:biostat-outreach@berkeley.edu).
+
