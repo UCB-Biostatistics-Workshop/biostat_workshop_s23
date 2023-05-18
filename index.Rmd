@@ -78,7 +78,7 @@ Max is a 4th year PhD student in the Department of Biostatistics at UC Berkeley.
 | Time             | Activity                                                                                                  |
 |----------------------|-------------------------------------------------|
 | 9 - 9:30 AM      | [Welcome and introduction](https://docs.google.com/presentation/d/1ubmW3tSswlPLCWKNndFRzxaO2RpYvOn8GHcgLclTNcI/edit?usp=sharing)                                                                                  |
-| 9:30 - 10:30 AM  | Lecture: Introduction to data science and data analysis |
+| 9:30 - 10:30 AM  | Lecture: [Introduction to data science and data analysis](https://docs.google.com/presentation/d/1BuW9tqQuQ15R2IFkdrAfHT1hwKxKO5ypF_XS7CSen64/edit?usp=sharing) |
 | 10:30 - 10:45 AM | Forming groups and Q&A                                                                                    |
 | 10:45 AM - 12 PM | Campus Tour                                                                                               |
 | 12 - 1 PM        | Lunch Break                                                                                               |
