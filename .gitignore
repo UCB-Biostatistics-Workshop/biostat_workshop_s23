@@ -39,3 +39,6 @@ learnr-tuts/**/*_files/
 *.utf8.md
 *.knit.md
 _site/
+
+presentations/*_files/
+presentations/*.html
