@@ -3,14 +3,12 @@ title: "Hello, R!"
 output: 
     learnr::tutorial:
         progressive: true
-        allow_skip: true
 runtime: shiny_prerendered
 description: "Welcome to a learnr tutorial for R!"
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
-# remotes::install_github("rstudio/gradethis")
 library(gradethis)
 gradethis_setup()
 options(tutorial.exercise.timelimit = 5)
@@ -74,7 +72,7 @@ x <- 5 # This is also a comment
 We will also use comments inside of exercises. These comments will tell you what you need to do to complete the exercise. For example:
 
 ```{r exercise_intro1, exercise=TRUE}
-# Assign the value 10 to a variable called x
+# Assign the value 10 to a variable called x then press the "Submit Answer" button
 x <- 10
 ```
 
@@ -88,10 +86,12 @@ grade_result(
 )
 ```
 
+### Exercises with Blanks 
+
 Sometimes we will use the underscore character, _, to indicate a blank space that you need to fill in. For example:
 
 ```{r, exercise_intro2, exercise=TRUE, exercise.blanks = "___+"}
-# replace the underscores with the number 10
+# replace the underscores with the number 10 then press the "Submit Answer" button
 x <- ___
 ```
 
@@ -232,7 +232,7 @@ print(paste("x is less than y:", z))
 
 ```{r exercise_logical2-check}
 grade_result(
-    pass_if(~ z == TRUE)
+    pass_if(~ z == FALSE)
 )
 ```
 
@@ -253,6 +253,8 @@ You can use the `levels()` function to see the set of values for a factor variab
 levels(gender)
 ```
 
+We won't be using factor variables much in this course, but it's good to know that they exist.
+
 ## Functions
 
 A function is a block of code that performs a specific task. Functions are useful for modularizing your code and making it more readable and maintainable. R comes with many built-in functions, and you can also define your own functions.
@@ -272,7 +274,7 @@ print(paste("Mean of vector:", mean_of_vector))
 ```
 
 
-### Extra Credit: Defining Functions
+### Extra Credit: Defining Functions {data-allow-skip=TRUE}
 
 Sometimes the built-in functions don't do everything we want them to do. To solve this, we can define our own functions! To define a function in R, you can use the `function()` keyword, followed by the arguments to the function in parentheses, and then the body of the function in curly braces. For example:
 
@@ -293,7 +295,7 @@ result
 
 This will call the `my_function()` function with arguments x = 3 and y = 5, and store the result in the variable result.
 
-### Exercise: Define a Function
+### Exercise: Define a Function {data-allow-skip=TRUE}
 
 Define a function called `add_one()` that takes a single argument `x` and adds 1 to it. Then, call the function with the argument `x = 5` and store the result in a variable called `result`.
 
@@ -325,7 +327,7 @@ grade_result(
 Up to this point, we have mostly been working with single variables. However, more often than not, you will want to work with multiple variables at the same time. In R, we can do this using collections such as **vectors** and **data frames**.
 
 
-### Vectors
+### Vectors {data-allow-skip=TRUE}
 A vector is a collection of values of the same data type. For example, a vector could contain a list of numbers, a list of names, or a list of Boolean values. To create a vector, you can use the `c()` function, which stands for "concatenate" or "combine". For example:
 
 ```{r, eval=TRUE}
@@ -337,7 +339,7 @@ This creates a new vector my_vector that contains the values 1, 2, 3, 4, and 5.
 
 You can access individual elements of a vector using indexing. Indexing is a way of referring to a specific element in the vector. In R, indexing starts at 1 (unlike some other programming languages, which start indexing at 0). You can also use a colon (`:`) to access a range of values. For example:
 
-```{r ex_vector1, exercise=TRUE, exercise.eval=TRUE}
+```{r ex_vector1, exercise=TRUE}
 my_vector <- c(1, 2, 3, 4, 5)
 my_vector[1] # This will return the first element of the vector
 
@@ -440,12 +442,63 @@ This will return the first row of the data frame.
 ### Exercise: Create a Data Frame
 Create a new data frame called my_data that contains the following data:
 
-| fruit | color | |
+| name | age | likes_ice_cream |
 |------|-----|------------|
-| John | 30  | TRUE       |
-| Mary | 25  | FALSE      |
-| Bob  | 40  | TRUE       |
+| John | 12  | TRUE       |
+| Mary | 16  | FALSE      |
+| Bob  | 15  | FALSE      |
 
+Access the second row of the data frame and store it in a new variable called second_row. Access the age column of the data frame and store it in a new variable called age_column.
+
+```{r exercise_dataframe, exercise=TRUE, exercise.blanks = "___+"}
+# Replace the underscore with the code needed to create the data frame
+
+my_data <- data.frame(
+    name = ___,
+    age = c(12, 16, 15),
+    likes_ice_cream = ___
+)
+
+# Replace the underscore with the code needed to access the second row of the data frame
+
+second_row <- ___
+
+# Replace the underscore with the code needed to access the age column of the data frame
+
+age_column <- ___
+
+print(paste("Second row:", second_row))
+print(paste("Color column:", age_column))
+```
+
+```{r exercise_dataframe-solution}
+my_data <- data.frame(
+    name = c("John", "Mary", "Bob"),
+    age = c(30, 25, 40),
+    is_student = c(TRUE, FALSE, TRUE)
+    )
+
+second_row <- my_data[2,]
+color_column <- my_data["age"]
+
+print(paste("Second row:", second_row))
+print(paste("Color column:", color_column))
+```
+
+```{r exercise_dataframe-check}
+
+grade_result(
+    pass_if(~ my_data[1,1] == "John"),
+    pass_if(~ my_data[2,2] == 25),
+    pass_if(~ my_data[3,3] == TRUE),
+    pass_if(~ second_row[1,1] == "Mary"),
+    pass_if(~ second_row[2,2] == 25),
+    pass_if(~ second_row[3,3] == FALSE),
+    pass_if(~ color_column[1] == 30),
+    pass_if(~ color_column[2] == 25),
+    pass_if(~ color_column[3] == 40)
+)
+```
 
 
 
@@ -489,7 +542,7 @@ In the first two examples, we are using character indexing by using `$` to acces
 - Add a new named element to the list with the name "berries" and the values "strawberry" and "blueberry".
 - Access the "berries" element of the list and store it in a variable called `my_berries`.
 
-```{r exercise_list, exercise=TRUE, exercise.blanks = "___+"}
+```{r exercise_list, exercise=TRUE, exercise.blanks = "___+", exercise.lines = 25}
 # Replace the underscore with the code needed to create the list
 # **Hint:** You can create a list using the `list()` function. 
 # For example, `my_list <- list(name = "John Smith", age = 30, is_student = TRUE)`.
