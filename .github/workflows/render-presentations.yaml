@@ -4,8 +4,8 @@ on:
       - presentations/*
   workflow_dispatch:
     inputs:
-      rebuild_website:
-        description: 'Rebuild website'
+      render_presentations:
+        description: 'Render Presentations'
         required: true
         default: 'true'
 
@@ -30,7 +30,7 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Build site
+      - name: Render Presentations
         run: quarto render presentations
 
       - name: Deploy to GitHub pages 🚀
