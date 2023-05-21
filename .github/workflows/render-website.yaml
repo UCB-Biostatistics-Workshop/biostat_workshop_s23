@@ -1,9 +1,7 @@
 on:
   push:
     paths: 
-      - index.Rmd
-      - styles.css
-      - _site.yml
+      - site/*
   workflow_dispatch:
     inputs:
       rebuild_website:
