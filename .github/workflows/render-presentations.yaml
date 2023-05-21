@@ -12,11 +12,11 @@ on:
 name: render-presentations
 
 jobs:
-  render-website:
+  render-presentations:
     runs-on: ubuntu-latest
     # Only restrict concurrency for non-PR jobs
     concurrency:
-      group: render-website-${{ github.event_name != 'pull_request' || github.run_id }}
+      group: render-presentations-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -29,6 +29,10 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
+
+      - name: Install Packages
+        run: install.packages(c("gapminder", "rmarkdown", "tidyverse"))
+        shell: Rscript {0}
 
       - name: Render Presentations
         run: quarto render presentations
