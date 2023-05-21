@@ -1,0 +1,239 @@
+---
+title: "Data Visualization"
+author: "Max Murphy"
+format: revealjs
+---
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.align="center")
+
+theme_set(theme_classic(base_size = 28))
+```
+
+# The Power of Data Visualization
+
+---
+
+## Introduction
+
+- Data visualization is a vital tool for understanding and communicating insights from data
+- In this presentation, we will explore the importance and utility of data visualization techniques
+
+
+## Why Data Visualization?
+
+- Humans are visual creatures; we process visual information more effectively than numbers or text
+- Data visualization helps us comprehend complex patterns, relationships, and trends in data
+- It enables us to make informed decisions and communicate findings with clarity
+
+
+## Key Benefits of Data Visualization
+
+1. **Insight Generation**: Visual representations can reveal hidden patterns and insights that may go unnoticed in raw data.
+2. **Storytelling**: Visualization facilitates storytelling by presenting data in a compelling and memorable way.
+3. **Simplification**: Complex data can be simplified and transformed into intuitive visual forms, aiding comprehension.
+
+
+## Exploring Data with Visualizations
+
+Let's explore the **gapminder dataset** using various visualization techniques.
+
+- The gapminder dataset contains socio-economic indicators for different countries over time.
+- It includes variables such as life expectancy, GDP per capita, population, and more.
+- The dataset covers multiple years and several countries around the world.
+
+---
+
+## `gapminder` Dataset {auto-animate="true"}
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Load the Iris dataset
+data(gapminder, package = "gapminder")
+
+# Display the first few rows of the dataset
+head(gapminder)
+```
+
+## `gapminder` Dataset {auto-animate="true"}
+
+- The dataset contains 1,704 observations and 6 variables
+- The variables are:
+    - **country**: Country name
+    - **continent**: Continent name
+    - **year**: Year
+    - **lifeExp**: Life expectancy at birth
+    - **pop**: Population
+    - **gdpPercap**: GDP per capita
+
+## Summary Statistics {auto-animate="true"}
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Display summary statistics for the dataset
+summary(gapminder)
+```
+
+
+
+## Exploring the Data {auto-animate="true"}
+Let's explore the data and try to answer some questions:
+
+## Exploring the Data {auto-animate="true"}
+Let's explore the data and try to answer some questions:
+
+- How does life expectancy relate to GDP per capita?
+
+## Exploring the Data {auto-animate="true"}
+
+- How does life expectancy relate to GDP per capita?
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Plot life expectancy vs. GDP per capita
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+    geom_point() +
+    labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+## Exploring the Data {auto-animate="true"}
+
+- How does life expectancy relate to GDP per capita?
+
+```{r}
+#| echo: false
+#| eval: true
+
+# Plot life expectancy vs. GDP per capita
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+    geom_point() +
+    labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+## Exploring the Data {auto-animate="true"}
+
+There's a lot of data in this plot. Let's simplify it by looking at the data for a single year.
+
+```{r}
+#| echo: false
+#| eval: true
+
+# Plot life expectancy vs. GDP per capita
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+    geom_point() +
+    labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+## Exploring the Data {auto-animate="true"}
+
+There's a lot of data in this plot. Let's simplify it by looking at the data for a single year.
+
+```{r}
+#| echo: true
+#| eval: false
+gapminder_2007 <- gapminder |> filter(year == 2007)
+```
+
+## Exploring the Data {auto-animate="true"}
+There's a lot of data in this plot. Let's simplify it by looking at the data for a single year.
+
+```{r}
+#| echo: true
+#| eval: false
+gapminder_2007 <- gapminder |> filter(year == 2007)
+
+# Plot life expectancy vs. GDP per capita
+ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
+    geom_point() +
+    labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+## Exploring the Data {auto-animate="true"}
+There's a lot of data in this plot. Let's simplify it by looking at the data for a single year.
+
+```{r}
+#| echo: false
+#| eval: true
+gapminder_2007 <- gapminder |> filter(year == 2007)
+
+# Plot life expectancy vs. GDP per capita
+ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
+    geom_point() +
+    labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+
+## Exploring the Data {auto-animate="true"}
+
+- How do population, GDP per capita, and life expectancy vary across countries?
+
+## Exploring the Data {auto-animate="true"}
+
+- How do population, GDP per capita, and life expectancy vary across countries?
+
+```{.r code-line-numbers="|5"}
+#| echo: true
+#| eval: false
+
+ggplot(gapminder_2007, 
+    aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+    geom_point() +
+    labs(x = "GDP per Capita", y = "Life Expectancy", 
+         size = "Population", color = "Continent")
+```
+
+## Exploring the Data {auto-animate="true"}
+
+- How do population, GDP per capita, and life expectancy vary across countries?
+
+```{r}
+#| echo: false
+#| eval: true
+
+ggplot(gapminder_2007, 
+    aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+    geom_point() +
+    labs(x = "GDP per Capita", y = "Life Expectancy", size = "Population", color = "Continent")
+```
+
+## Exploring the Data {auto-animate="true"}
+We can also look at data over time by plotting year on the x-axis.
+
+## Exploring the Data {auto-animate="true"}
+
+- How does life expectancy vary over time for each country? for each continent?
+
+## Exploring the Data {auto-animate="true"}
+
+- How does life expectancy vary over time for each country? for each continent?
+
+```{.r code-line-numbers="|4"}
+#| echo: true
+#| eval: false
+ggplot(gapminder, 
+  aes(x = year, y = lifeExp, color = continent, group = country)) +
+  geom_line() +
+  labs(x = "Year", y = "Life Expectancy", color = "Continent")
+```
+
+## Exploring the Data {auto-animate="true"}
+
+```{r}
+#| echo: false
+#| eval: true 
+ggplot(gapminder, aes(x = year, y = lifeExp, color = continent, group = country)) +
+  geom_line() +
+  labs(x = "Year", y = "Life Expectancy", color = "Continent")
+```
+
+## Conclusion
+
+- Data visualization is an important tool for exploring data, communicating information, and answering questions
+- It can reveal patterns, tell compelling stories, and allows us to make informed decisions
