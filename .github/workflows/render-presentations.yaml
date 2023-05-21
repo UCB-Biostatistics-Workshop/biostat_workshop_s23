@@ -1,0 +1,42 @@
+on:
+  push:
+    paths: 
+      - presentations/*
+  workflow_dispatch:
+    inputs:
+      rebuild_website:
+        description: 'Rebuild website'
+        required: true
+        default: 'true'
+
+name: render-presentations
+
+jobs:
+  render-website:
+    runs-on: ubuntu-latest
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: render-website-${{ github.event_name != 'pull_request' || github.run_id }}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with: 
+          tinytex: true
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Build site
+        run: quarto render presentations
+
+      - name: Deploy to GitHub pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          clean: false
+          branch: gh-pages
+          folder: presentations/_presentations
+          target-folder: presentations
