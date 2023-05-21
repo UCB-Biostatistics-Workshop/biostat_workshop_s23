@@ -142,8 +142,54 @@ Try changing the number of bins in the histogram to see how it affects the shape
 
 There are other variables you could explore further, try changing the x-axis variable to `bill_length_mm` or `bill_depth_mm` and see what you find. Be sure to update your axis labels accordingly!
 
+```{r histogram-q1, echo=FALSE}
+question("What is the approximate range of body mass for the penguins in the dataset?",
+    answer("2500 - 6500", correct = TRUE),
+    answer("1000 - 2000"),
+    answer("0 - 1000"),
+    answer("10000 - 20000"),
+    incorrect = "You can use the `summary()` function to get a summary of the dataset, which includes the range of each variable.",
+    allow_retry = TRUE
+)
+```
+
+### Box plots
+Like histograms, box plots are a type of chart that is used to display the distribution of a dataset. However, they are more useful for comparing the distributions of different groups or variables within a dataset. They are also useful for identifying outliers and clusters within the data. 
+
+Box plots also show specific values such as the median (the middle value), the first quartile (the value that is greater than 25% of the data), and the third quartile (the value that is greater than 75% of the data). These are represented by the middle, top and bottom lines of the box, respectively. The whiskers represent the range of the data, and the outliers are represented by the points outside of the whiskers.
+
+Let's create a box plot of the body mass of the penguins, grouped by species:
+
+```{r penguin-boxplot, warning=FALSE, message=FALSE, exercise=TRUE, exercise.eval=TRUE}
+# Initialize the ggplot object with the penguins dataset
+ggplot(data = penguins, aes(x = species, y = body_mass_g)) +
+  # Create a boxplot
+  geom_boxplot() +
+  labs(
+    title = "Distribution of Body Mass for Palmer Penguins",
+    x = "Species", y = "Body Mass (g)"
+    )
+```
+
+Try changing the x-axis variable to `sex` or `island` and see what you find. Be sure to update your axis labels accordingly!
+
+```{r boxplot-q1, echo=FALSE}
+question("Which species of penguin has the highest median flipper length?",
+    answer("Adelie"),
+    answer("Chinstrap"),
+    answer("Gentoo", correct = TRUE),
+    incorrect = "Remember, the median is the middle value of the data, and is represented by the line in the middle of the box.",
+    allow_retry = TRUE
+)
+```
+
+```{r boxplot-q2, echo=FALSE}
+```
+
+
+
 ### Scatterplots
-Histograms are useful for understanding the distribution of a single variable, but what if we want to explore the relationship between two variables? Scatterplots are a great way to visualize the relationship between two numerical variables. They are useful for identifying outliers, clusters, and trends in the data.
+Histograms and boxplots are useful for understanding the distribution of a single variable, but what if we want to explore the relationship between two variables? Scatterplots are a great way to visualize the relationship between two numerical variables. They are useful for identifying outliers, clusters, and trends in the data.
 
 A scatter plot is a type of chart that is used to display the relationship between two variables. It is a graph consisting of a series of points, where each point represents a single observation in the dataset. The x-axis represents one variable, and the y-axis represents the other variable. Scatter plots are useful for identifying patterns, trends, and outliers in the data, as well as visualizing the strength and direction of the relationship between the two variables.
 
@@ -158,12 +204,23 @@ ggplot(
   geom_point()
 ```
 
-This code uses the `ggplot()` function to initialize a plot, and the `aes()` function to specify the x and y variables for the plot. Here we specify that the x coordinate represents the body mass, while the y coordinate represents the flipper length. The `geom_point()` function is then used to add points to the plot, with each point representing a single observation in the dataset.
+Here we specify that the x coordinate represents the body mass, while the y coordinate represents the flipper length. The `geom_point()` function is then used to add points to the plot, with each point representing a single observation in the dataset.
 
 This plot shows that there is a positive relationship between body mass and flipper length, with larger penguins having longer flipper lengths.  We can also try exploring other variables in the dataset, such as the bill length and depth. Try changing the x and y variables in the code above to see what you find! For reference, here is a list of the variables in the dataset:
 
 ```{r penguin-variables, echo=FALSE}
 colnames(penguins)
+```
+
+```{r scatterplot-q1, echo=FALSE}
+
+question("There is a ___ relationship between body mass and bill length.",
+    answer("positive", correct = TRUE),
+    answer("negative"),
+    answer("no"),
+    incorrect = "Try looking at the plot again. Are the points clustered around a line that slopes up from left to right, or down from left to right?",
+    allow_retry = TRUE
+)
 ```
 
 ### Adding additional information to the plot
@@ -203,3 +260,17 @@ ggplot(data = penguins, aes(x = body_mass_g, y = flipper_length_mm, color = spec
 ```
 
 This code adds the shape = sex argument to the aes() function, which tells ggplot() to use the sex variable to determine the shape of each point on the plot. This plot shows that male and female penguins have different shapes, with triangles representing males and circles representing females. It also shows that there is some overlap between the sexes for each species, but that male penguins tend to have larger body mass, flipper length, and bill depth than female penguins for all three species.
+
+```{r scatterplot-q2, echo=FALSE}
+question("Which species of penguin have the greatest body mass?",
+    answer("Gentoo", correct = TRUE),
+    answer("Adelie"),
+    answer("Chinstrap"),
+    incorrect = "Try looking at the plot again. Which species is furthest to the right on the graph?",
+    allow_retry = TRUE
+)
+```
+
+### Conclusion
+
+In this tutorial, we learned how to use ggplot2 to create histograms, boxplots, and scatterplots. We also learned how to add additional information to our plots using color, size, and shape. These plots can be used to explore the distribution of a single variable, as well as the relationship between two variables. 
