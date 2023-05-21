@@ -95,7 +95,7 @@ Max is a 4th year PhD student in the Department of Biostatistics at UC Berkeley.
 | 12:45 - 1:15 PM     | Lunch Break                                  |
 | 1:15 - 1:30 PM      | Lecture: [Data Visualization](presentations/data_visualization.html)|
 | 1:30 - 2:15 PM      | R workshop ([Penguins and Data Visualization](https://biostat-workshop-s23.fly.dev/penguins/){target="_blank"}) |
-| 2:15 - 3 PM         | Brainstorming and Creativity                 |
+| 2:15 - 3 PM         | [Brainstorming and Creativity](group.html)                 |
 
 # Resources
 

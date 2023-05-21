@@ -1,6 +1,11 @@
 name: "data-science-workshop"
 navbar:
   title: "UC Berkeley Biostatistics Data Science Workshop"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Group Brainstorm"
+      href: group.html
 output:
   html_document:
     version: 5

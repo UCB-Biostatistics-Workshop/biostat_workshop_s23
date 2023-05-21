@@ -37,7 +37,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Build site
-        run: rmarkdown::render_site("index.Rmd")
+        run: rmarkdown::render_site("site")
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀
@@ -45,4 +45,5 @@ jobs:
         with:
           clean: false
           branch: gh-pages
-          folder: _site
+          folder: site/_site
+          target-folder: .

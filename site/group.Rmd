@@ -20,3 +20,17 @@ Each group will have 10 minutes to present their question, hypothesis, and propo
 
 ## Q&A and Feedback: 
 After each presentation, there will be a brief question-and-answer session. Workshop participants are encouraged to provide constructive feedback, suggest alternative approaches, or ask clarifying questions.
+
+# Example:
+
+## Question:
+How does the number of hours spent studying affect students’ grades?
+
+## Hypothesis:
+Students who study more hours will have higher grades.
+
+## Data:
+The data required to answer this question would include the number of hours spent studying and the corresponding grades for each student. The data could be collected from a survey or obtained from a school or university.
+
+## Data Visualization Techniques:
+A scatter plot would be an effective visualization technique to explore the relationship between the number of hours spent studying and the corresponding grades. The scatter plot would allow us to visualize the data points for each student and identify any patterns or trends.

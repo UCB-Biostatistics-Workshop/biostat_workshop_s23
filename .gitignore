@@ -38,7 +38,7 @@ learnr-tuts/**/*_files/
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
-_site/
+site/_site/
 
 presentations/*_files/
 presentations/*.html
